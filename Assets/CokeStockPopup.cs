@@ -43,13 +43,13 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			var stocks = "Stock Price : $100";
+			var stocks = "Stock Price : $42.53";
 
 			Title.fontSize = 70;
-			Title.font = (Font)Resources.Load("C:/Users/Someone/Documents/GitHub/SmartSight/Assets/Fonts/Freshman.ttf");
+			//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 			Title.normal.textColor = Color.white;
 			Texty.fontSize = 50;
-			Texty.font = (Font)Resources.Load("C:/Users/Someone/Documents/GitHub/SmartSight/Assets/Fonts/FineCollege.ttf");
+			//Texty.font = (Font)Resources.Load("Fonts/FineCollege.ttf");
 			Texty.normal.textColor = Color.white;
 			GUI.Label(lTitle, "The Coca-Cola Co(KO)",Title);
 			//if(GUI.Button(
@@ -73,7 +73,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 
 			};
 
-			GUI.Label(lTitle, totalDebt, Title);
+			//GUI.Label(lTitle, totalDebt, Title);
 
 
 		}

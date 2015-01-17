@@ -3,7 +3,7 @@ using System.Collections;
 using System.Xml;
 using System.IO;
 
-public class NVIDIAStockPopup : MonoBehaviour, ITrackableEventHandler {
+public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private TrackableBehaviour mTrackableBehaviour;
 	private bool mShowGUIButton = false;
 	private Rect lTitle = new Rect(2,50,400,100);
@@ -41,7 +41,7 @@ public class NVIDIAStockPopup : MonoBehaviour, ITrackableEventHandler {
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			var stocks = "Stock Price : $19.96";
+			var stocks = "Stock Price : $41.78";
 			
 			Title.fontSize = 70;
 			//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
@@ -49,7 +49,7 @@ public class NVIDIAStockPopup : MonoBehaviour, ITrackableEventHandler {
 			Texty.fontSize = 50;
 			//Texty.font = (Font)Resources.Load("Fonts/FineCollege.ttf");
 			Texty.normal.textColor = Color.white;
-			GUI.Label(lTitle, "NVIDIA(NVDA)",Title);
+			GUI.Label(lTitle, "Unilever(UL)",Title);
 			//if(GUI.Button(
 			GUI.skin.font = MyFont;
 			GUI.Label(lText, stocks, Texty);

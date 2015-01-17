@@ -50,10 +50,11 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			foreach (XmlNode node in nodeList)
 			{
 				if(node.Attributes["field"].Value == "TotalDebt"){
-					Debug.Log (totalDebt);
+					Debug.Log ("hi" + totalDebt);
 					totalDebt = node.InnerText;
 
 				}
+				Debug.Log ("not a right node");
 
 			};
 

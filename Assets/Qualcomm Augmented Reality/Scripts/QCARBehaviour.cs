@@ -19,7 +19,6 @@ public class QCARBehaviour : QCARAbstractBehaviour
 {
     QCARBehaviour()
     {
-		Debug.Log("<color=red>Fatal error:</color> This thing");
         mAndroidUnityPlayer = new AndroidUnityPlayer();
     }
 }

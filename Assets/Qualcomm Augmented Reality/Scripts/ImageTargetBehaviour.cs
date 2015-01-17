@@ -5,7 +5,6 @@ Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
 ==============================================================================*/
 
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
 /// <summary>

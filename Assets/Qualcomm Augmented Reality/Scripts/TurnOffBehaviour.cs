@@ -20,12 +20,10 @@ public class TurnOffBehaviour : TurnOffAbstractBehaviour
         {
             // We remove the mesh components at run-time only, but keep them for
             // visualization when running in the editor:
-			Debug.Log("<color=red>Fatal error:</color> AssetBundle not found");
-			MeshRenderer targetMeshRenderer = this.GetComponent<MeshRenderer>();
+            MeshRenderer targetMeshRenderer = this.GetComponent<MeshRenderer>();
             Destroy(targetMeshRenderer);
             MeshFilter targetMesh = this.GetComponent<MeshFilter>();
             Destroy(targetMesh);
-
         }
     }
 

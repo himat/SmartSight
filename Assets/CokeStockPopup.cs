@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonPopup : MonoBehaviour, ITrackableEventHandler {
+public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	
 	private TrackableBehaviour mTrackableBehaviour;
-	
 	private bool mShowGUIButton = false;
-	private Rect mButtonRect = new Rect(50,50,120,60);
+	private Rect lTitle = new Rect(50,50,400,100);
+	private Rect lText = new Rect(50,100,300,100);
+	private GUIStyle Title = new GUIStyle();
+	
 	
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -34,7 +36,10 @@ public class ButtonPopup : MonoBehaviour, ITrackableEventHandler {
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			GUI.Label(mButtonRect, "34.5");
+			
+	
+			Title.fontSize = 30;
+			GUI.Label(lTitle, "34.5");
 		}
 	}
 }

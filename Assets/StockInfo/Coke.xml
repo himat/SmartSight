@@ -19,7 +19,7 @@
             <fiscalyear>2013</fiscalyear>
             <fiscalquarter>4</fiscalquarter>
             <rowset>
-              -<value type="decimal" field="TotalDebt" label="Total Debt" precision="0">37079000000</value>
+              <value type="decimal" field="TotalDebt" label="Total Debt" precision="0">37079000000</value>
               <value type="decimal" field="TotalAssetsFQ" label="Total Assets, FQ" precision="0">96314000000</value>
               <value type="decimal" field="TotalAssetsFY" label="Total Assets, FY" precision="0">90055000000</value>
               <value type="decimal" field="CommonStock" label="Common Stock" precision="0">1760000000</value>
@@ -41,8 +41,8 @@
               <value type="decimal" field="OtherLiabilities" label="Other Liabilities" precision="0">3498000000</value>
               <value type="decimal" field="PreferredStock" label="Preferred Stock" precision="0" />
               <value type="decimal" field="PropertyPlantEquipmentNet" label="Property, Plant &amp; Equipment, Net" precision="0">14967000000</value>
-              -<value type="decimal" field="RetainedEarnings" label="Retained Earnings" precision="0">61660000000</value>
-              -<value type="decimal" field="TotalAssets" label="Total Assets" precision="0">90055000000</value>
+              <value type="decimal" field="RetainedEarnings" label="Retained Earnings" precision="0">61660000000</value>
+              <value type="decimal" field="TotalAssets" label="Total Assets" precision="0">90055000000</value>
               <value type="decimal" field="TotalCurrentAssets" label="Total Current Assets" precision="0">31304000000</value>
               <value type="decimal" field="TotalCurrentLiabilities" label="Total Current Liabilities" precision="0">27811000000</value>
               <value type="decimal" field="TotalLiabilities" label="Total Liabilities" precision="0">56882000000</value>

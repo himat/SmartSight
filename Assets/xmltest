@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<dialogue>
+    <npc1>
+        <speach1>Speach bubble 1</speach1>
+        <speach2>Speach bubble 2</speach2>
+        <speach3>Speach bubble 3</speach3>
+    </npc1>
+</dialogue>

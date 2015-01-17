@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Xml;
+using System.IO;
+
 
 public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	
@@ -32,14 +35,29 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			mShowGUIButton = false;
 		}
 	}
-	
+
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button		
 			Title.fontSize = 100;
 			Title.font = (Font)Resources.Load("Fonts/Freshman");
 			Title.normal.textColor = Color.white;
-			GUI.Label(lTitle, "34.5",Title);
+
+			XmlDocument xmlDoc = new XmlDocument();
+			xmlDoc.Load("StockInfo/Coke.xml");
+			XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/corefinancials/result/rowset/row/groups/group/rowset");
+			string totalDebt = "", retainedEarnings = "", totalAssets="";
+			foreach (XmlNode node in nodeList)
+			{
+				if(node.Attributes["field"].Value == "TotalDebt"){
+					Debug.Log (totalDebt);
+					totalDebt = node.InnerText;
+
+				}
+
+			};
+
+			GUI.Label(lTitle, totalDebt, Title);
 
 		}
 	}

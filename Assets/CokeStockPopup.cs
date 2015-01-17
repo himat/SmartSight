@@ -37,7 +37,8 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 		if (mShowGUIButton) {
 			// draw the GUI button
 			
-	
+			Debug.Log("<color=red>Fatal error:</color> found it");
+
 			Title.fontSize = 30;
 			GUI.Label(lTitle, "34.5");
 		}

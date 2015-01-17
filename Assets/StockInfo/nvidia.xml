@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<corefinancials>
+  <result>
+    <limit>1</limit>
+    <offset>0</offset>
+    <totalrows>1</totalrows>
+    <duration>ANN</duration>
+    <rowset>
+      <row>
+        <rownum>1</rownum>
+        <entityid>4967</entityid>
+        <groups>
+          <group>
+            <conceptgroups>
+              <conceptgroup>BalanceSheetConsolidated</conceptgroup>
+              <conceptgroup>BalanceSheetFull</conceptgroup>
+              <conceptgroup>PrimaryFinancials</conceptgroup>
+            </conceptgroups>
+            <fiscalyear>2014</fiscalyear>
+            <fiscalquarter>4</fiscalquarter>
+            <rowset>
+              <value type="decimal" field="TotalDebt" label="Total Debt" precision="0">1373875000</value>
+              <value type="decimal" field="TotalAssetsFQ" label="Total Assets, FQ" precision="0">6885869000</value>
+              <value type="decimal" field="TotalAssetsFY" label="Total Assets, FY" precision="0">7250894000</value>
+              <value type="decimal" field="CommonStock" label="Common Stock" precision="0">732000</value>
+              <value type="decimal" field="CurrentPortionofLongtermDebt" label="Current Portion of Long-term Debt" precision="0" />
+              <value type="decimal" field="DeferredCharges" label="Deferred Charges" precision="0" />
+              <value type="decimal" field="DeferredLiabilityCharges" label="Deferred Liability Charges" precision="0" />
+              <value type="decimal" field="AccountsPayable" label="Accounts Payable" precision="0">324391000</value>
+              <value type="decimal" field="CashandCashEquivalents" label="Cash and Cash Equivalents" precision="0">1151587000</value>
+              <value type="decimal" field="CashCashEquivalentsandShorttermInvestments" label="Cash, Cash Equivalents and Short-term Investments" precision="0">4671810000</value>
+              <value type="decimal" field="Goodwill" label="Goodwill" precision="0">643179000</value>
+              <value type="decimal" field="IntangibleAssets" label="Intangible Assets" precision="0">296012000</value>
+              <value type="decimal" field="InventoriesNet" label="Inventories, Net" precision="0">387765000</value>
+              <value type="decimal" field="LongtermDebt" label="Long-term Debt" precision="0">1356375000</value>
+              <value type="decimal" field="MinorityInterest" label="Minority Interest" precision="0" />
+              <value type="decimal" field="OtherAssets" label="Other Assets" precision="0">104252000</value>
+              <value type="decimal" field="OtherCurrentAssets" label="Other Current Assets" precision="0" />
+              <value type="decimal" field="OtherCurrentLiabilities" label="Other Current Liabilities" precision="0" />
+              <value type="decimal" field="OtherEquity" label="Other Equity" precision="0" />
+              <value type="decimal" field="OtherLiabilities" label="Other Liabilities" precision="0">475125000</value>
+              <value type="decimal" field="PreferredStock" label="Preferred Stock" precision="0">0</value>
+              <value type="decimal" field="PropertyPlantEquipmentNet" label="Property, Plant &amp; Equipment, Net" precision="0">582740000</value>
+              <value type="decimal" field="RetainedEarnings" label="Retained Earnings" precision="0">3504742000</value>
+              <value type="decimal" field="TotalAssets" label="Total Assets" precision="0">7250894000</value>
+              <value type="decimal" field="TotalCurrentAssets" label="Total Current Assets" precision="0">5624711000</value>
+              <value type="decimal" field="TotalCurrentLiabilities" label="Total Current Liabilities" precision="0">945496000</value>
+              <value type="decimal" field="TotalLiabilities" label="Total Liabilities" precision="0">2794496000</value>
+              <value type="decimal" field="TotalLongtermAssets" label="Total Long-term Assets" precision="0">1626183000</value>
+              <value type="decimal" field="TotalLongtermDebt" label="Total Long-term Debt" precision="0">1373875000</value>
+              <value type="decimal" field="TotalLongtermLiabilities" label="Total Long-term Liabilities" precision="0">1849000000</value>
+              <value type="decimal" field="TotalReceivablesNet" label="Total Receivables, Net" precision="0">426357000</value>
+              <value type="decimal" field="TotalSharesOutstanding" label="Total Shares Outstanding" precision="0">554241412</value>
+              <value type="decimal" field="TotalShorttermDebt" label="Total Short-term Debt" precision="0" />
+              <value type="decimal" field="TotalStockholdersEquity" label="Total Stockholder's Equity" precision="0">4456398000</value>
+              <value type="decimal" field="TreasuryStock" label="Treasury Stock" precision="0">-2537295000</value>
+            </rowset>
+          </group>
+          <group>
+            <conceptgroups>
+              <conceptgroup>Metadata</conceptgroup>
+              <conceptgroup>MetadataFree</conceptgroup>
+            </conceptgroups>
+            <fiscalyear>2014</fiscalyear>
+            <fiscalquarter>4</fiscalquarter>
+            <rowset>
+              <value type="string" field="Duration" label="Duration">ANN</value>
+            </rowset>
+          </group>
+          <group>
+            <conceptgroups>
+              <conceptgroup>FinancialHeaderData</conceptgroup>
+              <conceptgroup>PrimaryFinancials</conceptgroup>
+            </conceptgroups>
+            <fiscalyear>2014</fiscalyear>
+            <fiscalquarter>4</fiscalquarter>
+            <rowset>
+              <value type="date" field="PeriodEndDate" label="Period End Date">1/26/2014</value>
+              <value type="integer" field="FiscalYear" label="Fiscal Year">2014</value>
+              <value type="integer" field="FiscalQuarter" label="Fiscal Quarter">4</value>
+            </rowset>
+          </group>
+        </groups>
+      </row>
+    </rowset>
+  </result>
+</corefinancials>

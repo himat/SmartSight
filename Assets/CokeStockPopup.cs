@@ -15,7 +15,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
 	public Font MyFont;
-	
+
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
 		if (mTrackableBehaviour)
@@ -58,24 +58,38 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Box(backgroundy,"", Backy);
 
 
-			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load("StockInfo/Coke.xml");
-			XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/corefinancials/result/rowset/row/groups/group/rowset");
-			string totalDebt = "", retainedEarnings = "", totalAssets="";
-			foreach (XmlNode node in nodeList)
-			{
-				if(node.Attributes["field"].Value == "TotalDebt"){
-					Debug.Log ("hi" + totalDebt);
-					totalDebt = node.InnerText;
-
-				}
-				Debug.Log ("not a right node");
 
 			};
 
 			//GUI.Label(lTitle, totalDebt, Title);
 
+			/*
+			var totalDebt = "";
+			var retainedEarnings = "";
+			var totalAssets = "";
+			XmlDocument doc = new XmlDocument();
+			doc.Load("C:\\Users\\Hima\\Documents\\Visual Studio 2012\\Projects\\XMLTest\\XMLTest\\StockInfo\\Coke.xml");
+			
+			XmlNode node = doc.DocumentElement.SelectSingleNode("/corefinancials/result/rowset/row/groups/group/rowset");
+			foreach (XmlNode valueNode in node)
+			{
+				if(valueNode.Attributes["field"].InnerText=="TotalDebt")
+					totalDebt = valueNode.InnerText;
+				if (valueNode.Attributes["field"].InnerText == "RetainedEarnings")
+					retainedEarnings = valueNode.InnerText;
+				if (valueNode.Attributes["field"].InnerText == "TotalAssets")
+					totalAssets = valueNode.InnerText;
+			}
+			
+			/*Console.WriteLine(totalDebt);
+			Console.WriteLine(retainedEarnings);
+			Console.WriteLine(totalAssets);
+			Console.ReadLine();*/
+			//Debug.Log (totalDebt);
+			//Debug.Log (retainedEarnings);
+			Debug.Log ("if this outputs, that is good");
+			GUI.Label(lTitle, "hi", Title);
 
 		}
-	}
+
 }

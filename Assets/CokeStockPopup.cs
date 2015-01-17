@@ -36,10 +36,11 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			
-	
-			Title.fontSize = 30;
-			GUI.Label(lTitle, "34.5");
+				
+			Title.fontSize = 100;
+			Title.font = (Font)Resources.Load("Fonts/Freshman");
+			Title.normal.textColor = Color.white;
+			GUI.Label(lTitle, "34.5",Title);
 		}
 	}
 }

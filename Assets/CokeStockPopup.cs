@@ -14,7 +14,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
-
+	public Font MyFont;
 	
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -22,6 +22,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 		{
 			mTrackableBehaviour.RegisterTrackableEventHandler(this);
 		}
+		bool focusModeSet = CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
 	}
 	
 	public void OnTrackableStateChanged(
@@ -43,14 +44,16 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 		if (mShowGUIButton) {
 			// draw the GUI button
 			var stocks = "Stock Price : $100";
+
 			Title.fontSize = 70;
-			Title.font = (Font)Resources.Load("Fonts/Freshman");
+			Title.font = (Font)Resources.Load("C:/Users/Someone/Documents/GitHub/SmartSight/Assets/Fonts/Freshman.ttf");
 			Title.normal.textColor = Color.white;
 			Texty.fontSize = 50;
-			Texty.font = (Font)Resources.Load("Fonts/Freshman");
+			Texty.font = (Font)Resources.Load("C:/Users/Someone/Documents/GitHub/SmartSight/Assets/Fonts/FineCollege.ttf");
 			Texty.normal.textColor = Color.white;
 			GUI.Label(lTitle, "The Coca-Cola Co(KO)",Title);
 			//if(GUI.Button(
+			GUI.skin.font = MyFont;
 			GUI.Label(lText, stocks, Texty);
 			GUI.Box(backgroundy,"", Backy);
 

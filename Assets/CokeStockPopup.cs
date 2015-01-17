@@ -14,7 +14,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
-	private Texture2D texturey = new Texture2D(128, 128, TextureFormat.ARGB32, false);
+
 	
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -49,7 +49,6 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			Texty.fontSize = 50;
 			Texty.font = (Font)Resources.Load("Fonts/Freshman");
 			Texty.normal.textColor = Color.white;
-			Backy.normal.background = texturey;
 			GUI.Label(lTitle, "The Coca-Cola Co(KO)",Title);
 			//if(GUI.Button(
 			GUI.Label(lText, stocks, Texty);

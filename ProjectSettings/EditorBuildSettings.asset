@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/help.unity
   - enabled: 1
     path: Assets/about.unity
+  - enabled: 1
+    path: Assets/moreinfo.unity

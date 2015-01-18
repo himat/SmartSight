@@ -20,6 +20,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
+	private GUIStyle Buttony = new GUIStyle();
 	public Font MyFont;
 
 	//Stock calculations via Bloomberg
@@ -31,8 +32,6 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private float todayPrice =  0;	
 	private float dailyChange = 0;
 	private float yearlyChange = 0;
-
-	private ParticleSystem.Particle[] points;
 
 	//Stock data via Edgar Online
 	XmlDocument edgarXmlDoc = null;
@@ -97,10 +96,6 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 		}
 	}
 
-	void Update() {
-		//particleSystem.SetParticles(points, points.Length);
-	}
-
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
@@ -128,16 +123,6 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 
 				dailyChange = todayPrice-yesterdayPrice;
 				yearlyChange = todayPrice-lastYearPrice;
-
-				int resolution = thisYearPrices.Count;
-				points = new ParticleSystem.Particle[resolution];
-				float increment = 1f / (resolution - 1);
-				for (int i = 0; i < resolution; i++) {
-					float x = i * increment;
-					points[i].position = new Vector3(x, 0f, 0f);
-					points[i].color = new Color(x, 0f, 0f);
-					points[i].size = 0.1f;
-				}
 			}
 
 			/************************************************\
@@ -162,6 +147,13 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label (lText, stocks, Texty);
 			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
 			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);
+
+			Buttony.fontSize = 65;
+			Buttony.normal.textColor = Color.white;
+			if (GUI.Button(new Rect (32, 450, 400, 80), "")) {
+				Application.LoadLevel ("moreinfo");	
+			}
+			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
 			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+bankBalance/todayPrice), Texty);
 			};

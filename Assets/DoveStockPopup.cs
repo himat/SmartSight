@@ -18,6 +18,7 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
+	private GUIStyle Buttony = new GUIStyle();
 	public Font MyFont;
 	
 	//Stock calculations via Bloomberg
@@ -94,6 +95,13 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label (lText, stocks, Texty);
 			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
 			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);
+			
+			Buttony.fontSize = 65;
+			Buttony.normal.textColor = Color.white;
+			if (GUI.Button(new Rect (32, 450, 400, 80), "")) {
+				Application.LoadLevel ("moreinfo");	
+			}
+			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 			
 		};
 		

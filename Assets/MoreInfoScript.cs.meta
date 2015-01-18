@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 3b000bb7f6fdab649a3a5fd24e8dd8c1
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - MyFont: {fileID: 12800000, guid: be9e4c3aa90450146aa9c832579f93f4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

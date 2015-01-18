@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GUIMenu : MonoBehaviour {
+public class MoreInfoScript : MonoBehaviour {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Buttony = new GUIStyle();
 	public Font MyFont;

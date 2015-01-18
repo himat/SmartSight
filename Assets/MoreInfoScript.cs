@@ -26,7 +26,10 @@ public class MoreInfoScript : MonoBehaviour {
 	private Rect lPrompt = new Rect(2, 650, 300, 100);
 	private Rect lInput = new Rect (2, 750, 600, 150);
 	private string pickupAddress = "";
-	private string dropoffAddress = "";
+	private string dropoffAddress = "220 South 33rd Street, Philadelphia, PA";
+	private bool displayQuote = false;
+	private string responseString2 = null;
+	private JSONNode parser2 = null;
 
 	// Use this for initialization
 	void Start () {
@@ -78,10 +81,67 @@ public class MoreInfoScript : MonoBehaviour {
 			prompt += "Coke?";
 		}
 		GUI.Label (lPrompt, prompt, Texty);
-		dropoffAddress = GUI.TextArea (lInput, dropoffAddress);
+		dropoffAddress = GUI.TextField(lInput, dropoffAddress);
+		
+		Buttony.fontSize = 65;
+		Buttony.normal.textColor = Color.white;
+		if (GUI.Button(new Rect (Screen.width * 3/4, 650, 400, 80), "Get Quote")) {
+			string username = "7cb30674-b406-474d-a453-3cc59587d89c";
+			string password = "";
+			string encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(username + ":" + password));
+			HttpWebRequest req = (HttpWebRequest) HttpWebRequest.Create ("https://api.postmates.com/v1/customers/cus_KAbLacuUuuIaTV/deliveries");
+//			string[] names = new string[] {"pickup_address", "dropoff_address"};
+//			string[] data = new string[] {pickupAddress, dropoffAddress};
+//			byte[] postData = GetBytes(GeneratePostData(names, data));
+			req.Headers.Add("Authorization", "Basic " + encoded);
+//			req.ContentType = "application/x-www-form-urlencoded";
+//			req.ContentLength = postData.Length;			
+//			req.Method = "POST";
+//			Stream dataStream = req.GetRequestStream();
+//			dataStream.Write(postData, 0, postData.Length);
+//			dataStream.Close ();
+
+			HttpWebResponse res = (HttpWebResponse) req.GetResponse ();
+			using (Stream stream = res.GetResponseStream())
+			{
+				StreamReader reader = new StreamReader(stream, new System.Text.UTF8Encoding()); 
+				responseString2 = reader.ReadToEnd();
+			}
+			res.Close();
+			parser2 = JSON.Parse(responseString2);
+
+			displayQuote = true;
+		}
+		if (displayQuote) {
+			GUI.Label (new Rect(Screen.width * 3/4, 450, 400, 100), "ETA: " + responseString2, Texty);
+			GUI.Label (new Rect(Screen.width * 3/4, 550, 400, 100), "Cost: ", Texty);
+			
+			if (GUI.Button(new Rect (Screen.width * 3/4, 750, 400, 80), "Buy")) {
+				
+			}
+		}
 
 		Title.fontSize = 200;
 		Title.normal.textColor = Color.white;
 		GUI.Label(new Rect(Screen.width/2 - Screen.width/16, Screen.height/3 - Screen.height/4, 200, 100), stockTicker, Title);
+	}
+
+	static string GeneratePostData(string[] names, string[] values){
+		string postData = "";
+		
+		for (int idx = 0; idx < names.Length; idx++) {
+			postData += names[idx] + "=" + System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes(values[idx]));
+			if (idx < names.Length - 1) {
+				postData += "&";
+			}
+		}
+		
+		return postData;
+	}
+
+	static byte[] GetBytes(string str) {
+		byte[] bytes = new byte[str.Length * sizeof(char)];
+		System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+		return bytes;
 	}
 }

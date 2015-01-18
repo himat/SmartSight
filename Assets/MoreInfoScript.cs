@@ -23,6 +23,11 @@ public class MoreInfoScript : MonoBehaviour {
 	private Rect lRE = new Rect(2, 400, 300, 100);
 	private Rect lTA = new Rect(2, 500, 300, 100);
 
+	private Rect lPrompt = new Rect(2, 650, 300, 100);
+	private Rect lInput = new Rect (2, 750, 600, 150);
+	private string pickupAddress = "";
+	private string dropoffAddress = "";
+
 	// Use this for initialization
 	void Start () {
 		
@@ -30,6 +35,10 @@ public class MoreInfoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("myscene");
+		}
 
 	}
 	
@@ -62,6 +71,14 @@ public class MoreInfoScript : MonoBehaviour {
 		GUI.Label (lTD, "Total Debt: " + totalDebt, Texty);
 		GUI.Label (lRE, "Retained Earnings: " + retainedEarnings, Texty);
 		GUI.Label (lTA, "Total Assets: " + totalAssets, Texty);
+
+		string prompt = "Would you like to be delivered ";
+		if (stockTicker == "KO") {
+			pickupAddress = "1617 John F Kennedy Boulevard, Philadelphia, PA";
+			prompt += "Coke?";
+		}
+		GUI.Label (lPrompt, prompt, Texty);
+		dropoffAddress = GUI.TextArea (lInput, dropoffAddress);
 
 		Title.fontSize = 200;
 		Title.normal.textColor = Color.white;

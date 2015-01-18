@@ -22,7 +22,7 @@ public class GUIMenu : MonoBehaviour {
 		Buttony.normal.textColor = Color.white;
 
 		if (GUI.Button(new Rect (Screen.width/6,Screen.height/2 + Screen.height/4, 300, 200), "")) {
-						
+					Application.LoadLevel ("help");	
 				}
 
 		if (GUI.Button(new Rect (Screen.width / 2 - Screen.width/12,Screen.height/2 + Screen.height/4, 300, 200), "")) {
@@ -31,7 +31,7 @@ public class GUIMenu : MonoBehaviour {
 
 
 		if (GUI.Button(new Rect (Screen.width - Screen.width/3,Screen.height/2 + Screen.height/4, 300, 200), "")) {
-			
+			Application.LoadLevel ("about");
 		}
 
 		GUI.Label (new Rect (Screen.width / 5 - Screen.width/80, Screen.height / 2 + Screen.height/4 + Screen.height/15, 300, 200), "About", Buttony);

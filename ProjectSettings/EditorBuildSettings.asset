@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/menu.unity
   - enabled: 1
     path: Assets/myscene.unity
+  - enabled: 1
+    path: Assets/help.unity
+  - enabled: 1
+    path: Assets/about.unity

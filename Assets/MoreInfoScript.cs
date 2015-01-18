@@ -19,6 +19,10 @@ public class MoreInfoScript : MonoBehaviour {
 	private string retainedEarnings = "null";
 	private string totalAssets = "null";
 
+	private Rect lTD = new Rect(2, 300, 300, 100);
+	private Rect lRE = new Rect(2, 400, 300, 100);
+	private Rect lTA = new Rect(2, 500, 300, 100);
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,6 +35,8 @@ public class MoreInfoScript : MonoBehaviour {
 	
 	void OnGUI() {
 		GUI.skin.font = MyFont;
+		Texty.fontSize = 50;
+		Texty.normal.textColor = Color.white;
 
 		if (responseString == null) {
 			HttpWebRequest req = (HttpWebRequest) HttpWebRequest.Create ("http://edgaronline.api.mashery.com/v1/corefinancials?primarysymbols="+stockTicker+"&conceptGroups=BalanceSheetConsolidated&sortby=primarysymbol+asc&debug=false&appkey=x5dx58wc6mqkn6j668fnedqh");
@@ -53,29 +59,12 @@ public class MoreInfoScript : MonoBehaviour {
 			retainedEarnings = rE["value"].AsDouble.ToString();
 			totalAssets = tA["value"].AsDouble.ToString();
 		}
+		GUI.Label (lTD, "Total Debt: " + totalDebt, Texty);
+		GUI.Label (lRE, "Retained Earnings: " + retainedEarnings, Texty);
+		GUI.Label (lTA, "Total Assets: " + totalAssets, Texty);
 
-//		Buttony.fontSize = 65;
-//		Buttony.normal.textColor = Color.white;
-//		
-//		if (GUI.Button(new Rect (Screen.width/6,Screen.height/2 + Screen.height/4, 300, 200), "")) {
-//			Application.LoadLevel ("help");	
-//		}
-//		
-//		if (GUI.Button(new Rect (Screen.width / 2 - Screen.width/12,Screen.height/2 + Screen.height/4, 300, 200), "")) {
-//			Application.LoadLevel ("myscene");
-//		}
-//		
-//		
-//		if (GUI.Button(new Rect (Screen.width - Screen.width/3,Screen.height/2 + Screen.height/4, 300, 200), "")) {
-//			Application.LoadLevel ("about");
-//		}
-//		
-//		GUI.Label (new Rect (Screen.width / 5 - Screen.width/80, Screen.height / 2 + Screen.height/4 + Screen.height/15, 300, 200), "About", Buttony);
-//		GUI.Label (new Rect (Screen.width / 2 - Screen.width/50 - Screen.width/30, Screen.height / 2 + Screen.height/4 + Screen.height/15, 200, 100), "Start", Buttony);
-//		GUI.Label (new Rect (Screen.width - Screen.width/3 + Screen.width/24 - Screen.width/80, Screen.height / 2 + Screen.height/4 + Screen.height/15, 200, 100), "Help", Buttony);
 		Title.fontSize = 200;
-		//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 		Title.normal.textColor = Color.white;
-		GUI.Label(new Rect(Screen.width/2 - Screen.width/4, Screen.height/2 - Screen.height/4, 200, 100), stockTicker, Title);
+		GUI.Label(new Rect(Screen.width/2 - Screen.width/16, Screen.height/3 - Screen.height/4, 200, 100), stockTicker, Title);
 	}
 }

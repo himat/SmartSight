@@ -143,8 +143,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			//Dictionary dict = ser.Deserialize<Dictionary<string,object>>(jsonInput);
 			//var postalCode = dict["fieldData"];
 
-			//var stocks = "Stock Price : " + todayPrice;
-			var stocks = "Logged in?: " + LoginMenu.isLoggedIn;
+			var stocks = "Stock Price : " + todayPrice;	//var stocks = "Logged in?: " + LoginMenu.isLoggedIn;
 			GUI.Label (lText, stocks, Texty);
 			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
 			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);

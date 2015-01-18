@@ -160,9 +160,6 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
 			if(LoginMenu.isLoggedIn)
-				Texty.fontSize = 50;
-				//Texty.font = (Font)Resources.Load("Fonts/FineCollege.ttf");
-				Texty.normal.textColor = Color.white;
 				GUI.Label(lStockAmount,pricey , Texty);
 	          }
 			//GUI.Label(lTitle, totalDebt, Title);

@@ -88,7 +88,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			//Debug.Log (totalDebt);
 			//Debug.Log (retainedEarnings);
 			Debug.Log ("if this outputs, that is good");
-			GUI.Label(lTitle, "hi", Title);
+
 
 		}
 

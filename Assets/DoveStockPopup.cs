@@ -55,7 +55,7 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label(lText, stocks, Texty);
 			GUI.Box(backgroundy,"", Backy);
 			
-			
+			/*
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load("StockInfo/Coke.xml");
 			XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/corefinancials/result/rowset/row/groups/group/rowset");
@@ -73,7 +73,7 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 			
 			GUI.Label(lTitle, totalDebt, Title);
 			
-			
+			*/
 		}
 	}
 }

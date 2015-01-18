@@ -9,7 +9,9 @@ public class AboutMenu : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("menu");
+		}
 	}
 	
 	// Update is called once per frame

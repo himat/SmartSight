@@ -13,7 +13,9 @@ public class HelpMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("menu");
+		}
 	}
 	void OnGUI () {
 		GUI.skin.font = MyFont;

@@ -36,7 +36,9 @@ public class LoginMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("menu");
+				}
 	}
 	void OnGUI () {
 
@@ -55,7 +57,7 @@ public class LoginMenu : MonoBehaviour {
 
 		GUI.Label (new Rect (Screen.width / 80, Screen.height / 80 , 100, 200), "Capital One Login", Title);
 		GUI.Label (new Rect (Screen.width / 80, Screen.height / 5 + Screen.height / 20, 100, 200), "Please Enter Your  \nFirst and Last Name:", Texty);
-		enteredName = GUI.TextArea(new Rect (Screen.width / 80, Screen.height / 4 + Screen.height / 8, 600, 150), enteredName, 30);
+		enteredName = GUI.TextField(new Rect (Screen.width / 80, Screen.height / 4 + Screen.height / 8, 600, 150), enteredName, 30);
 
 		if (GUI.Button(new Rect (0 , Screen.height/3 *2, 300, 200), "1")) {
 			
@@ -64,10 +66,10 @@ public class LoginMenu : MonoBehaviour {
 
 			if(isLoggedIn)	
 			{
-				jsonBankInfoInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d/accounts?key=CUST993aa30727255ae56bf9447b45dbfc39");
-				bankInfoParser = JSON.Parse (jsonAccountInput);
+				//jsonBankInfoInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d/accounts?key=CUST993aa30727255ae56bf9447b45dbfc39");
+				//bankInfoParser = JSON.Parse (jsonAccountInput);
 				
-				bankBalance = accountParser[0]["balance"].AsInt;
+				//bankBalance = accountParser[0]["balance"].AsInt;
 				Application.LoadLevel ("menu");
 			}
 			else

@@ -30,6 +30,8 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private float dailyChange = 0;
 	private float yearlyChange = 0;
 
+	private ParticleSystem.Particle[] points;
+
 	/*
 	public class FieldData
 	{
@@ -82,18 +84,20 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 		}
 	}
 
+	void Update() {
+		particleSystem.SetParticles(points, points.Length);
+	}
+
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			var stocks = "Stock Price : $42.53";
-
 			Title.fontSize = 70;
 			//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 			Title.normal.textColor = Color.white;
 			Texty.fontSize = 50;
 			//Texty.font = (Font)Resources.Load("Fonts/FineCollege.ttf");
 			Texty.normal.textColor = Color.white;
-			GUI.Label(lTitle, "The Coca-Cola Co(KO)",Title);
+			GUI.Label(lTitle, "The Coca-Cola Co (KO)",Title);
 			//if(GUI.Button(
 			GUI.skin.font = MyFont;
 
@@ -111,6 +115,16 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 
 				dailyChange = todayPrice-yesterdayPrice;
 				yearlyChange = todayPrice-lastYearPrice;
+
+				int resolution = thisYearPrices.Count;
+				points = new ParticleSystem.Particle[resolution];
+				float increment = 1f / (resolution - 1);
+				for (int i = 0; i < resolution; i++) {
+					float x = i * increment;
+					points[i].position = new Vector3(x, 0f, 0f);
+					points[i].color = new Color(x, 0f, 0f);
+					points[i].size = 0.1f;
+				}
 			}
 			/*RootObject wrapper = ser.Deserialize<RootObject> (jsonInput);
 			Datum d = wrapper.data;
@@ -119,7 +133,9 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			var theDate = fieldData.date[fieldData.date.Length-1];*/
 			//Dictionary dict = ser.Deserialize<Dictionary<string,object>>(jsonInput);
 			//var postalCode = dict["fieldData"];
-
+			
+			var stocks = "Stock Price : " + todayPrice;
+			GUI.Label (lText, stocks, Texty);
 			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
 			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);
 

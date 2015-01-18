@@ -22,10 +22,19 @@ public class GUIMenu : MonoBehaviour {
 		Buttony.fontSize = 65;
 		Buttony.normal.textColor = Color.white;
 
-		if (GUI.Button(new Rect (Screen.width - Screen.width/8,Screen.height/70, 200, 200), avaimg)) {
-			Application.LoadLevel ("login");
-		}
-		
+		if (LoginMenu.isLoggedIn == false) {
+						if (GUI.Button (new Rect (Screen.width - Screen.width / 8, Screen.height / 70, 200, 200), avaimg)) {
+				Application.LoadLevel ("login");
+						}
+				}
+		if (LoginMenu.isLoggedIn == true) {
+			if (GUI.Button(new Rect (Screen.width - Screen.width - Screen.width/110 / 8,Screen.height / 70, 300, 200), "")) {
+				LoginMenu.isLoggedIn = false;
+				LoginMenu.enteredName = "";
+			}
+			GUI.Label (new Rect (Screen.width - Screen.width / 8 - Screen.width/110, Screen.height / 70 + Screen.height/15, 200, 100), "Logout", Buttony);
+				}
+
 		if (GUI.Button(new Rect (Screen.width/6,Screen.height/2 + Screen.height/4, 300, 200), "")) {
 			Application.LoadLevel ("help");	
 		}
@@ -42,6 +51,7 @@ public class GUIMenu : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width / 5 - Screen.width/80, Screen.height / 2 + Screen.height/4 + Screen.height/15, 300, 200), "About", Buttony);
 		GUI.Label (new Rect (Screen.width / 2 - Screen.width/50 - Screen.width/30, Screen.height / 2 + Screen.height/4 + Screen.height/15, 200, 100), "Start", Buttony);
 		GUI.Label (new Rect (Screen.width - Screen.width/3 + Screen.width/24 - Screen.width/80, Screen.height / 2 + Screen.height/4 + Screen.height/15, 200, 100), "Help", Buttony);
+
 		Title.fontSize = 200;
 		//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 		Title.normal.textColor = Color.white;

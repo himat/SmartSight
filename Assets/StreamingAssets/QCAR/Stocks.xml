@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="polandspring" size="206.000000 550.000000" />
-    <ImageTarget name="croissants" size="565.000000 358.000000" />
     <ImageTarget name="Coke" size="580.000000 434.044800" />
+    <ImageTarget name="Nvidia" size="500.000000 314.000000" />
+    <ImageTarget name="nvidia2" size="314.000000 197.192001" />
+    <ImageTarget name="dove" size="1500.000000 707.000000" />
+    <ImageTarget name="DrPepperSnapple" size="500.000000 500.000000" />
   </Tracking>
 </QCARConfig>

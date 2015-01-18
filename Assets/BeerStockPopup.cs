@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 using System.IO;
+using System.Net;
+using SimpleJSON;
 
 public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 
@@ -9,12 +12,24 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private bool mShowGUIButton = false;
 	private Rect lTitle = new Rect(2,50,400,100);
 	private Rect lText = new Rect(2,150,300,100);
+	private Rect lDailyChange = new Rect (2, 250, 300, 100);
+	private Rect lYearlyChange = new Rect (2, 350, 300, 100);
 	private Rect backgroundy = new Rect (50,200,300,500);
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
 	public Font MyFont;
-	
+
+	//Stock calculations via Bloomberg
+	private string jsonInput = null;
+	private JSONNode parser = null;
+	private float lastYearPrice = 0;
+	private JSONNode thisYearPrices = null;
+	private float yesterdayPrice =  0;
+	private float todayPrice =  0;	
+	private float dailyChange = 0;
+	private float yearlyChange = 0;
+
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
 		if (mTrackableBehaviour)
@@ -42,8 +57,6 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button
-			var stocks = "Stock Price : $76.46";
-			
 			Title.fontSize = 70;
 			//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 			Title.normal.textColor = Color.white;
@@ -53,12 +66,37 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label(lTitle, "Dr Pepper Snapple (DPS)",Title);
 			//if(GUI.Button(
 			GUI.skin.font = MyFont;
-			GUI.Label(lText, stocks, Texty);
+			
 			GUI.Box(backgroundy,"", Backy);
 			
+			if(jsonInput == null)
+			{
+				jsonInput = new WebClient().DownloadString("http://104.131.94.146:8080/DPS");
+				parser = JSON.Parse (jsonInput);
+				
+				lastYearPrice = parser["data"] [0] ["securityData"] ["fieldData"] [0] ["PX_LAST"].AsFloat;
+				thisYearPrices = parser["data"] [0] ["securityData"] ["fieldData"];
+				yesterdayPrice =  thisYearPrices[thisYearPrices.Count-2] ["PX_LAST"].AsFloat;
+				todayPrice =  thisYearPrices[thisYearPrices.Count-1] ["PX_LAST"].AsFloat;
+				
+				dailyChange = todayPrice-yesterdayPrice;
+				yearlyChange = todayPrice-lastYearPrice;
+			}
+			/*RootObject wrapper = ser.Deserialize<RootObject> (jsonInput);
+			Datum d = wrapper.data;
+			SecurityData s = d.securityData;
+			FieldData fieldData = s.fieldData;
+			var theDate = fieldData.date[fieldData.date.Length-1];*/
+			//Dictionary dict = ser.Deserialize<Dictionary<string,object>>(jsonInput);
+			//var postalCode = dict["fieldData"];
 			
+			var stocks = "Stock Price : " + todayPrice;
+			GUI.Label (lText, stocks, Texty);
+			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
+			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);
 			
-		};
+			};
+			
 		
 		//GUI.Label(lTitle, totalDebt, Title);
 		
@@ -86,7 +124,7 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 			Console.ReadLine();*/
 		//Debug.Log (totalDebt);
 		//Debug.Log (retainedEarnings);
-		Debug.Log ("if this outputs, that is good");
+		//Debug.Log ("if this outputs, that is good");
 		
 		
 	}

@@ -5,6 +5,7 @@ public class GUIMenu : MonoBehaviour {
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Buttony = new GUIStyle();
 	public Font MyFont;
+	public Texture avaimg;
 	
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,10 @@ public class GUIMenu : MonoBehaviour {
 		GUI.skin.font = MyFont;
 		Buttony.fontSize = 65;
 		Buttony.normal.textColor = Color.white;
+
+		if (GUI.Button(new Rect (Screen.width - Screen.width/40,Screen.height/70, 300, 200), avaimg)) {
+			Application.LoadLevel ("login");
+		}
 		
 		if (GUI.Button(new Rect (Screen.width/6,Screen.height/2 + Screen.height/4, 300, 200), "")) {
 			Application.LoadLevel ("help");	

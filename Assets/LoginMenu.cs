@@ -14,6 +14,7 @@ public class LoginMenu : MonoBehaviour {
 
 
 
+
 	//Person's bank info
 	private string jsonAccountInput = null;
 	private JSONNode accountParser = null;

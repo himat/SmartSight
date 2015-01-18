@@ -12,12 +12,16 @@ public class LoginMenu : MonoBehaviour {
 	private GUIStyle Texty = new GUIStyle();
 	public Font MyFont;
 
-	string name = "";
+
 
 	//Person's bank info
 	private string jsonAccountInput = null;
 	private JSONNode accountParser = null;
 	private string accountName = null;
+
+	public static string enteredName = "N/A";
+	public static int bankBalance = -1;
+	public static bool isLoggedIn = false;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +33,12 @@ public class LoginMenu : MonoBehaviour {
 		
 	}
 	void OnGUI () {
+		if (jsonAccountInput == null) {
+			jsonAccountInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d?key=CUST993aa30727255ae56bf9447b45dbfc39");
+			accountParser = JSON.Parse (jsonAccountInput);
+			
+			accountName = accountParser["first name"].Value + accountParser["last name"].Value;
+			}
 		GUI.skin.font = MyFont;
 		Texty.fontSize = 65;
 		Texty.normal.textColor = Color.white;
@@ -43,6 +53,22 @@ public class LoginMenu : MonoBehaviour {
 
 		if (GUI.Button(new Rect (Screen.width/100 , Screen.height/3 *2, 300, 200), "")) {
 			Application.LoadLevel ("menu");
+
+		name = GUI.TextField (new Rect (Screen.width / 80, Screen.height / 50, 400, 200), "First and last name", Texty);
+
+
+		if (GUI.Button(new Rect (0 , Screen.height/30, 300, 200), "1")) {
+
+				enteredName = GUI.TextField (new Rect (Screen.width / 80 + 100, Screen.height / 50, 400, 200), "First and last name");
+			
+			if(enteredName == accountName)
+				isLoggedIn = true;
+
+			if(isLoggedIn)
+				Application.LoadLevel ("menu");
+			else
+				GUI.Label (new Rect (Screen.width / 2 - Screen.width/50 - Screen.width/30, Screen.height / 2 + Screen.height/4 + Screen.height/15, 200, 100), accountName + "::" + enteredName, Texty);
+
 		}
 		if (GUI.Button(new Rect (Screen.width/2 - Screen.width /3,Screen.height/3 *2, 300, 200), "")) {
 			Application.LoadLevel ("menu");
@@ -50,6 +76,7 @@ public class LoginMenu : MonoBehaviour {
 
 		GUI.Label (new Rect (Screen.width/2 - Screen.width /3, Screen.height/3 *2, 200, 100), "Back", Texty);
 	}
+}
 }
 
 /*using UnityEngine;

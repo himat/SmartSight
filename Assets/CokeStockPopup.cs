@@ -39,10 +39,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private string retainedEarnings = "null";
 	private string totalAssets = "null";
 
-	//Person's bank info
-	private string jsonBankInfoInput = null;
-	private JSONNode bankInfoParser = null;
-	private float bankBalance = 0;
+
 
 	/*
 	public class FieldData
@@ -157,7 +154,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			}
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
-			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+bankBalance/todayPrice), Texty);
+			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+LoginMenu.bankBalance/todayPrice), Texty);
 			};
 
 			//GUI.Label(lTitle, totalDebt, Title);

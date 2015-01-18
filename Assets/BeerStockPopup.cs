@@ -67,7 +67,11 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 			mShowGUIButton = false;
 		}
 	}
-	
+	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("menu");
+		}
+	}
 	void OnGUI() {
 		if (mShowGUIButton) {
 			// draw the GUI button

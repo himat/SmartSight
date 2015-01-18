@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyFont: {fileID: 12800000, guid: be9e4c3aa90450146aa9c832579f93f4, type: 3}
+  avaimg: {fileID: 2800000, guid: 9a4a55ad08f685c4fb9bd20429b5ab29, type: 3}
 --- !u!81 &717665559
 AudioListener:
   m_ObjectHideFlags: 0

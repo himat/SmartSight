@@ -22,7 +22,7 @@ public class GUIMenu : MonoBehaviour {
 		Buttony.fontSize = 65;
 		Buttony.normal.textColor = Color.white;
 
-		if (GUI.Button(new Rect (Screen.width - Screen.width/40,Screen.height/70, 300, 200), avaimg)) {
+		if (GUI.Button(new Rect (Screen.width - Screen.width/8,Screen.height/70, 200, 200), avaimg)) {
 			Application.LoadLevel ("login");
 		}
 		

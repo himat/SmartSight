@@ -40,6 +40,6 @@ public class GUIMenu : MonoBehaviour {
 		Title.fontSize = 200;
 		//Title.font = (Font)Resources.Load("Fonts/Freshman.ttf");
 		Title.normal.textColor = Color.white;
-		GUI.Label(new Rect(Screen.width/2 - Screen.width/4 - Screen.width/25, Screen.height/2 - Screen.height/4, 200, 100), "Smart Eye",Title);
+		GUI.Label(new Rect(Screen.width/2 - Screen.width/4 - Screen.width/13, Screen.height/2 - Screen.height/4, 200, 100), "Smart Sight",Title);
 	}
 }

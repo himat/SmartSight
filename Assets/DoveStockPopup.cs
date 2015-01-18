@@ -14,7 +14,9 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private Rect lText = new Rect(2,150,300,100);
 	private Rect lDailyChange = new Rect (2, 250, 300, 100);
 	private Rect lYearlyChange = new Rect (2, 350, 300, 100);
+	private Rect lStockAmount = new Rect (400, 900, 300, 100);
 	private Rect backgroundy = new Rect (50,200,300,500);
+
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
@@ -22,14 +24,25 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 	public Font MyFont;
 	
 	//Stock calculations via Bloomberg
-	private string jsonInput = null;
-	private JSONNode parser = null;
+	private string jsonBloombergInput = null;
+	private JSONNode bloombergParser = null;
 	private float lastYearPrice = 0;
 	private JSONNode thisYearPrices = null;
 	private float yesterdayPrice =  0;
 	private float todayPrice =  0;	
 	private float dailyChange = 0;
 	private float yearlyChange = 0;
+	
+	//Stock data via Edgar Online
+	XmlDocument edgarXmlDoc = null;
+	private string totalDebt = "null";
+	private string retainedEarnings = "null";
+	private string totalAssets = "null";
+	
+	//Person's bank info
+	private string jsonBankInfoInput = null;
+	private JSONNode bankInfoParser = null;
+	private float bankBalance = 0;
 	
 	void Start () {
 		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -70,13 +83,13 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 			
 			GUI.Box(backgroundy,"", Backy);
 			
-			if(jsonInput == null)
+			if(jsonBloombergInput == null)
 			{
-				jsonInput = new WebClient().DownloadString("http://104.131.94.146:8080/UL");
-				parser = JSON.Parse (jsonInput);
+				jsonBloombergInput = new WebClient().DownloadString("http://104.131.94.146:8080/UL");
+				bloombergParser = JSON.Parse (jsonBloombergInput);
 				
-				lastYearPrice = parser["data"] [0] ["securityData"] ["fieldData"] [0] ["PX_LAST"].AsFloat;
-				thisYearPrices = parser["data"] [0] ["securityData"] ["fieldData"];
+				lastYearPrice = bloombergParser["data"] [0] ["securityData"] ["fieldData"] [0] ["PX_LAST"].AsFloat;
+				thisYearPrices = bloombergParser["data"] [0] ["securityData"] ["fieldData"];
 				yesterdayPrice =  thisYearPrices[thisYearPrices.Count-2] ["PX_LAST"].AsFloat;
 				todayPrice =  thisYearPrices[thisYearPrices.Count-1] ["PX_LAST"].AsFloat;
 				
@@ -102,7 +115,8 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 				Application.LoadLevel ("moreinfo");	
 			}
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
-			
+
+			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+bankBalance/todayPrice), Texty);
 		};
 		
 		//GUI.Label(lTitle, totalDebt, Title);

@@ -28,7 +28,7 @@ public class GUIMenu : MonoBehaviour {
 						}
 				}
 		if (LoginMenu.isLoggedIn == true) {
-			if (GUI.Button(new Rect (Screen.width - Screen.width - Screen.width/110 / 8,Screen.height / 70, 300, 200), "")) {
+			if (GUI.Button(new Rect (Screen.width - Screen.width / 8 - Screen.width/110,Screen.height / 70, 300, 200), "")) {
 				LoginMenu.isLoggedIn = false;
 				LoginMenu.enteredName = "";
 			}

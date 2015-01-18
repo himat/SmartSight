@@ -112,6 +112,8 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 			Buttony.fontSize = 65;
 			Buttony.normal.textColor = Color.white;
 			if (GUI.Button(new Rect (32, 450, 400, 80), "")) {
+				MoreInfoScript.stockTicker = "DPS";
+				MoreInfoScript.stockPrices = thisYearPrices;
 				Application.LoadLevel ("moreinfo");	
 			}
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);

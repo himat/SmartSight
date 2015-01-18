@@ -25,7 +25,7 @@ public class LoginMenu : MonoBehaviour {
 	private string jsonBankInfoInput = null;
 	private JSONNode bankInfoParser = null;
 
-	public static string enteredName = "N/A";
+	public static string enteredName = "";
 	public static int bankBalance = -1;
 	public static bool isLoggedIn = false;
 
@@ -66,10 +66,10 @@ public class LoginMenu : MonoBehaviour {
 
 			if(isLoggedIn)	
 			{
-				//jsonBankInfoInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d/accounts?key=CUST993aa30727255ae56bf9447b45dbfc39");
-				//bankInfoParser = JSON.Parse (jsonAccountInput);
+				jsonBankInfoInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d/accounts?key=CUST993aa30727255ae56bf9447b45dbfc39");
+				bankInfoParser = JSON.Parse (jsonBankInfoInput);
 				
-				//bankBalance = accountParser[0]["balance"].AsInt;
+				bankBalance = bankInfoParser[0]["balance"].AsInt;
 				Application.LoadLevel ("menu");
 			}
 			else

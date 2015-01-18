@@ -14,7 +14,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private Rect lText = new Rect(2,150,300,100);
 	private Rect lDailyChange = new Rect (2, 250, 300, 100);
 	private Rect lYearlyChange = new Rect (2, 350, 300, 100);
-	private Rect lStockAmount = new Rect (400, 900, 300, 100);
+	private Rect lStockAmount = new Rect (2, 450, 300, 100);
 	private Rect backgroundy = new Rect (50,200,300,500);
 
 	private GUIStyle Title = new GUIStyle();
@@ -154,7 +154,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			}
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
-			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+LoginMenu.bankBalance/todayPrice), Texty);
+			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+(LoginMenu.bankBalance/todayPrice).ToString("F2"), Texty);
 			};
 
 			//GUI.Label(lTitle, totalDebt, Title);

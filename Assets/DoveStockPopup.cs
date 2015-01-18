@@ -118,8 +118,9 @@ public class DoveStockPopup : MonoBehaviour, ITrackableEventHandler {
 			}
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
-			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+bankBalance/todayPrice), Texty);
-		};
+			if(LoginMenu.isLoggedIn)
+				GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+(LoginMenu.bankBalance/todayPrice).ToString("F2"), Texty));
+		}
 		
 		//GUI.Label(lTitle, totalDebt, Title);
 		

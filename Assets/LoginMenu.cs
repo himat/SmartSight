@@ -38,12 +38,9 @@ public class LoginMenu : MonoBehaviour {
 			jsonAccountInput = new WebClient().DownloadString("http://api.reimaginebanking.com/customers/54b604dfa520e02948a0f45d?key=CUST993aa30727255ae56bf9447b45dbfc39");
 			accountParser = JSON.Parse (jsonAccountInput);
 			
-			accountName = accountParser["first name"].Value + accountParser["last name"].Value;
-			GUI.Label (new Rect (Screen.width/2, Screen.height/3 *2 + Screen.height/15, 200, 100), jsonAccountInput, Texty);
+			accountName = accountParser["first name"].Value + " " + accountParser["last name"].Value;
 			}
 
-		GUI.Label (new Rect (Screen.width-30, Screen.height/2 *2 + Screen.height/15, 200, 100), accountParser["first name"].ToString(), Texty);
-		
 		GUI.skin.font = MyFont;
 		Texty.fontSize = 65;
 		Texty.normal.textColor = Color.white;

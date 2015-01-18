@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
+using System.IO;
+using System.Net;
+using SimpleJSON;
 
 public class LoginMenu : MonoBehaviour {
 	//actually about menu

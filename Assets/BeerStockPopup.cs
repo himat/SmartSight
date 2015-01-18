@@ -120,7 +120,7 @@ public class BeerStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label (new Rect (72, 450, 400, 80), "More Info", Buttony);
 
 			if(LoginMenu.isLoggedIn)
-				GUI.Label(lStockAmount, pricey, Texty));
+				GUI.Label(lStockAmount, pricey, Texty);
 		
 		}
 		

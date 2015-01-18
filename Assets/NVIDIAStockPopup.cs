@@ -97,7 +97,7 @@ public class NVIDIAStockPopup : MonoBehaviour, ITrackableEventHandler {
 			}
 
 			if(LoginMenu.isLoggedIn)
-				GUI.Label(lStockAmount, pricey, Texty));
+				GUI.Label(lStockAmount, pricey, Texty);
 			}
 		/*
 			XmlDocument xmlDoc = new XmlDocument();

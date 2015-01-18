@@ -85,7 +85,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	}
 
 	void Update() {
-		particleSystem.SetParticles(points, points.Length);
+		//particleSystem.SetParticles(points, points.Length);
 	}
 
 	void OnGUI() {

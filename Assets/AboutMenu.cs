@@ -24,7 +24,7 @@ public class AboutMenu : MonoBehaviour {
 		GUI.skin.font = MyFont;
 		Texty.fontSize = 65;
 		Texty.normal.textColor = Color.white;
-		GUI.Label (new Rect (Screen.width / 80, Screen.height / 80 , 300, 200), "HelpFul Info \n...", Texty);
+		GUI.Label (new Rect (Screen.width / 80, Screen.height / 80 , 300, 200), "Point Camera at Target and View Information \n...", Texty);
 		if (GUI.Button(new Rect (Screen.width / 2 - Screen.width/12,Screen.height/2 + Screen.height/4, 300, 200), "")) {
 			Application.LoadLevel ("menu");
 		}

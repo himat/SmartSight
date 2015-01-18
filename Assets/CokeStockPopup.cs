@@ -14,7 +14,9 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private Rect lText = new Rect(2,150,300,100);
 	private Rect lDailyChange = new Rect (2, 250, 300, 100);
 	private Rect lYearlyChange = new Rect (2, 350, 300, 100);
+	private Rect lStockAmount = new Rect (400, 900, 300, 100);
 	private Rect backgroundy = new Rect (50,200,300,500);
+
 	private GUIStyle Title = new GUIStyle();
 	private GUIStyle Texty = new GUIStyle();
 	private GUIStyle Backy = new GUIStyle();
@@ -37,6 +39,11 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 	private string totalDebt = "null";
 	private string retainedEarnings = "null";
 	private string totalAssets = "null";
+
+	//Person's bank info
+	private string jsonBankInfoInput = null;
+	private JSONNode bankInfoParser = null;
+	private float bankBalance = 0;
 
 	/*
 	public class FieldData
@@ -156,6 +163,7 @@ public class CokeStockPopup : MonoBehaviour, ITrackableEventHandler {
 			GUI.Label(lDailyChange, "Daily Change: " + (dailyChange>0 ? System.String.Format("+{0}", dailyChange.ToString("F2")) : dailyChange.ToString("F2")), Texty);
 			GUI.Label (lYearlyChange, "Yearly Change: "+ (yearlyChange>0 ? System.String.Format("+{0}", yearlyChange.ToString("F2")) : yearlyChange.ToString ("F2")), Texty);
 
+			GUI.Label(lStockAmount, System.String.Format ("Can buy {0} stocks", ""+bankBalance/todayPrice), Texty);
 			};
 
 			//GUI.Label(lTitle, totalDebt, Title);
